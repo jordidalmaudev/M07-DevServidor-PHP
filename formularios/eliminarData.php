@@ -23,17 +23,20 @@
         echo "An exception occurred: " . $e->getMessage();
     }
 
-    if (isset($_GET['eliminar'])) {
-        $deleteId = $_GET['eliminar'];
-        echo "
+    if (isset($_GET['eliminar'])) : ?>
+        <?php $deleteId = $_GET['eliminar']; ?>
+        
         <form method='POST' action='eliminarData.php'>
-            <input type='hidden' name='deleteId' value='$deleteId'>
-            <p>¿Estás seguro de que deseas eliminar el usuario con ID $deleteId?</p>
+            <input type='hidden' name='deleteId' value="<?= $deleteId ?>">
+            <p>¿Estás seguro de que deseas eliminar el usuario con ID <?= $deleteId ?>?</p>
             <button type='submit' name='confirmarEliminar'>Eliminar</button>
+            <a href="index.php">Volver</a>
         </form>
-        ";
-    }
+        
+    
+    <?php endif; ?>
 
+    <?php
     if (isset($_POST['confirmarEliminar'])) {
         $deleteId = $_POST['deleteId'];
         $deleteUser = "DELETE FROM users WHERE id = $deleteId";

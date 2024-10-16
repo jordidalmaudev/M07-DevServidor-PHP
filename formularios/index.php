@@ -60,7 +60,7 @@
         $selectUser = "SELECT * FROM users WHERE id = $editId";
         $query = mysqli_query($conn, $selectUser);
         $user = mysqli_fetch_array($query);
-    ?>
+        ?>
 
         <!-- Edit User Form -->
         <form method="POST" action="">
@@ -74,7 +74,7 @@
             <button type="submit" name="updateUser">Actualizar</button>
         </form>
 
-    <?php
+        <?php
     }
 
 

@@ -9,8 +9,6 @@
 
 <body>
 
-
-
     <?php
     $host = "127.0.0.1";
     $user = "root";
@@ -23,6 +21,7 @@
         echo "An exception occurred: " . $e->getMessage();
     }
 
+    //prueba de los :
     if (isset($_GET['eliminar'])) : ?>
         <?php $deleteId = $_GET['eliminar']; ?>
         

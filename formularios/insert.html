@@ -6,6 +6,7 @@
     <title>Ejercicios Formularios</title>
 </head>
 <body>
+    <h1>Insertar Usuarios</h1>
     <form action="insertData.php" method="post" >
 
         <label for="nombre">Nombre:</label>
@@ -14,10 +15,17 @@
         <label for="apellidos">Apellido:</label>
         <input type="text" name="apellidos" id="apellidos" required>
 
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email" required>
+
         <label for="edad">Edad:</label>
         <input type="number" name="edad" id="edad" min="0" required>
         
         <button type="submit">Enviar</button>
     </form>
+
+    <div>
+        <a href="index.php">Volver</a>
+    </div>
 </body>
 </html>

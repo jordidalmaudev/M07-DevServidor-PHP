@@ -8,6 +8,8 @@
 <body>
 <?php
 
+include 'validaciones.php';
+
 $host = "127.0.0.1";
 $user = "root";
 $password = "";
@@ -20,19 +22,32 @@ try {
     echo "An exception occurred: " . $e->getMessage();
 };
 
-$nombre = $_REQUEST['nombre'];
-$apellidos = $_REQUEST['apellidos'];
-$edad = $_REQUEST['edad'];
+$nombre = $_POST['nombre'];
+$apellidos = $_POST['apellidos'];
+$email = $_POST['email'];
+$edad = $_POST['edad'];
 
-$insertDataQuery = "INSERT INTO users (nombre,apellidos,edad) VALUES('$nombre','$apellidos','$edad');";
 
-if (mysqli_query($conn, $insertDataQuery)) {
-    echo " <h2> " . "Data guardada correctamente en la base de datos" . "</h2>";
-    echo "<a href='insert.html'>Insertar otro usuario</a> ";
-    echo "<a href='index.php'>Inicio</a> ";
-    mysqli_close($conn);
+if (isMail($email)) {
+    $insertDataQuery = "INSERT INTO users (nombre,apellidos,email,edad) VALUES('$nombre','$apellidos','$email','$edad');";
+    if (mysqli_query($conn, $insertDataQuery)) {
+        echo " <h2> " . "Data guardada correctamente en la base de datos" . "</h2>";
+        echo "<a href='insert.html'>Insertar otro usuario</a> ";
+        echo "<a href='index.php'>Inicio</a> ";
+        mysqli_close($conn);
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
 } else {
-    echo "Error: " . mysqli_error($conn);
+    ?>
+    <h1>
+        <?= "El email no es válido" ?>
+    </h1>
+    <div>
+        <?= "<a href='insert.html'>Volver</a>" ?>
+    </div>
+
+    <?php
 }
 
 ?>

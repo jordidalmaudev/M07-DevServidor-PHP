@@ -12,16 +12,7 @@
 
     <?php
 
-    $host = "127.0.0.1";
-    $user = "root";
-    $password = "";
-    $dbname = "m7daw";
-
-    try {
-        $conn = mysqli_connect($host, $user, $password, $dbname);
-    } catch (Exception $e) {
-        echo "An exception occurred: " . $e->getMessage();
-    };
+    include 'conexion.php';
 
     $selectAllUsers = "SELECT * FROM users";
     $result = mysqli_query($conn, $selectAllUsers);

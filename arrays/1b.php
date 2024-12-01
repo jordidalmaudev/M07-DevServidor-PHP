@@ -29,16 +29,21 @@ $alumnes = [
 
 <?php
 
+
 // Buscar i mostrar el registre demanat
-
-$dni = $_GET["dni"];
-
 // Control d’errors (evitar qualsevol error, warning… i mostrar un missatge quan no troba cap registre coincident, per exemple)
 
-if (isset($alumnes[$dni])) {
-    echo "L'alumne amb DNI $dni és " . $alumnes[$dni][1] . " " . $alumnes[$dni][0] . " i la seva nota és " . $alumnes[$dni][2];
-} else {
-    echo "No s'ha trobat cap alumne amb DNI $dni";
+if (isset($_GET["dni"])) {
+    $dni = $_GET["dni"];
+    if (isset($alumnes[$dni])) {
+        echo "L'alumne amb DNI $dni és " . $alumnes[$dni][1] . " " . $alumnes[$dni][0] . " i la seva nota és " . $alumnes[$dni][2];
+        ?>
+        <br>
+        <a href="1b.php">Volver</a>
+        <?php
+    } else {
+        echo "No s'ha trobat cap alumne amb DNI $dni";
+    }
 }
 
 ?>

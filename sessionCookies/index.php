@@ -14,10 +14,10 @@ session_start()
 <body>
     <form action="login.php" method="post">
         <label for="login">Usuario:</label>
-        <input type="text" name="login" id="login" value="<?php echo $_COOKIE['login'] ?? ''; ?>">
+        <input type="email" name="login" id="login" value="<?php echo $_COOKIE['login'] ?? ''; ?>" required>
         <br>
         <label for="password">Contraseña:</label>
-        <input type="password" name="password" id="password" value="<?php echo $_COOKIE['password'] ?? ''; ?>">
+        <input type="password" name="password" id="password" value="<?php echo $_COOKIE['password'] ?? ''; ?>" required>
         <br>
         <input type="checkbox" name="remember" id="remember">
         <label for="remember">Recordarme</label>

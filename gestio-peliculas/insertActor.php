@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Nuevo Actor</title>
+</head>
+<body>
 <?php
 include 'connexio.php';
 $conn = connectBD();
@@ -25,3 +33,5 @@ $paises = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <input type="submit" value="Insertar Actor">
 </form>
+</body>
+</html>

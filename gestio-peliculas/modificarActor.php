@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Actor</title>
+</head>
+<body>
 <?php
 
 include 'connexio.php';
@@ -37,3 +45,5 @@ $paises = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <input type="submit" value="Editar Actor">
 </form>
+</body>
+</html>

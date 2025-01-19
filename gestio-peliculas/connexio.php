@@ -9,6 +9,7 @@ function connectBD() {
     global $host, $username, $password, $dbname;
     try {
         $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+        // convertir errores en excepciones
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $conn->exec("SET NAMES 'utf8'");
         echo "<h4>Conexión establecida</h4>";

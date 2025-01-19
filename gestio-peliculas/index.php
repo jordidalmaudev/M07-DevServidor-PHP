@@ -11,13 +11,13 @@
 
 <?php
 
-require 'connexio.php';
+require './db/connexio.php';
 $conn = connectBD();
 
 ?>
 
-<a href="insertActor.php">CREAR UN NUEVO ACTOR</a>
-<a href="insertPais.php">AÑADE UN PAIS</a>
+<a href="./vistas/insertActor.php">CREAR UN NUEVO ACTOR</a>
+<a href="./vistas/insertPais.php">AÑADE UN PAIS</a>
 <table>
 <thead>
         <tr>
@@ -43,7 +43,7 @@ try {
                 <td><img src='{$actor['imagen']}' alt='Imagen del actor' style='width: 100px; height: auto;'></td>
                 <td>{$actor['nombrePais']}</td>
                 <td>{$actor['nombreActor']}</td>
-                <td><a href='modificarActor.php?id={$actor['idActor']}'>Modificar</a> | <a href='eliminarActor.php?id={$actor['idActor']}'>Eliminar</a></td>
+                <td><a href='./vistas/modificarActor.php?id={$actor['idActor']}'>Modificar</a> | <a href='./vistas/eliminarActor.php?id={$actor['idActor']}'>Eliminar</a></td>
             </tr>
         ";
     }

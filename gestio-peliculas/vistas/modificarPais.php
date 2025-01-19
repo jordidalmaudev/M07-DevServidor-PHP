@@ -1,6 +1,6 @@
 <?php
 
-include 'connexio.php';
+require '../db/connexio.php';
 $conn = connectBD();
 
 $id = $_GET['id'];
@@ -12,9 +12,11 @@ $pais = $stm->fetch(PDO::FETCH_ASSOC);
 
 ?>
 
-<form action="modificar_pais.php" method="POST">
+<form action="../controladores/modificar_pais.php" method="POST">
     <input type="hidden" name="id" value="<?php echo $id; ?>">
     <label for="nombrePais">Nom del país:</label>
     <input type="text" name="nombrePais" id="nombrePais" value="<?php echo $pais['nombrePais'] ?>" required>
     <input type="submit" value="Modificar">
 </form>
+
+Volver al <a href="insertPais.php">listado de paises</a>

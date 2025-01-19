@@ -7,7 +7,7 @@
 </head>
 <body>
 <?php
-include 'connexio.php';
+require '../db/connexio.php';
 $conn = connectBD();
 
 // Obtener la lista de países
@@ -22,13 +22,13 @@ $paises = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-        <form action="insertar_pais.php" method="POST">
-    <label for="nombrePais">Nombre del Pais:</label>
-    <input type="text" id="nombrePais" name="nombrePais" required><br>
+        <form action="../controladores/insertar_pais.php" method="POST">
+            <label for="nombrePais">Nombre del Pais:</label>
+            <input type="text" id="nombrePais" name="nombrePais" required><br>
 
-    <input type="submit" value="Añadir Pais">
-</form>
-Volver al <a href="index.php">listado de actores</a>
+            <input type="submit" value="Añadir Pais">
+        </form>
+            Volver al <a href="../index.php">listado de actores</a>
         </div>
         <div class="col-md-6">
             <h2>Lista de paises</h2>

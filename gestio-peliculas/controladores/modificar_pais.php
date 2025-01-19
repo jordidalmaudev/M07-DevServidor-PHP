@@ -1,5 +1,5 @@
 <?php
-include 'connexio.php';
+require '../db/connexio.php';
 $conn = connectBD();
 
 try {
@@ -18,4 +18,4 @@ echo "País modificado correctamente.";
 }
 
 ?>
-<a href="insertPais.php">Volver a la lista de países</a>
+<a href="../vistas/insertPais.php">Volver a la lista de países</a>

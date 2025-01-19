@@ -1,5 +1,5 @@
 <?php
-include 'connexio.php';
+require '../db/connexio.php';
 $conn = connectBD();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($conn->exec($query)) {
         echo "Actor actualizado correctamente.";
+        echo "Volver al <a href=\"../index.php\">listado de actores</a>";
     } else {
         echo "Error al actualizar el actor.";
     }

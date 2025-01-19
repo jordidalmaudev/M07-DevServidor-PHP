@@ -1,5 +1,5 @@
 <?php
-include 'connexio.php';
+require '../db/connexio.php';
 $conn = connectBD();
 
 $idPais = $_GET['id'];
@@ -14,7 +14,7 @@ $pais = $stmt->fetch();
 <h1>Eliminar país</h1>
 <p>¿Estás seguro de que quieres eliminar el país <?=$pais['nombrePais']?>?</p>
 
-<form action="eliminar_pais.php" method="POST">
+<form action="../controladores/eliminar_pais.php" method="POST">
     <input type="hidden" name="id" value="<?php echo $idPais ?>">
     <input type="submit" value="Eliminar País">
 </form>

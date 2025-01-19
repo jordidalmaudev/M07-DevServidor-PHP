@@ -1,5 +1,5 @@
 <?php
-include 'connexio.php';
+require '../db/connexio.php';
 $conn = connectBD();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     if ($conn->exec($query)) {
         echo "Pais insertado correctamente.";
+        echo "Volver al <a href=\"../vistas/insertPais.php\">listado de paises</a>";
     } else {
         echo "Error al insertar el pais.";
     }

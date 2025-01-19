@@ -1,5 +1,5 @@
 <?php
-include 'connexio.php';
+require '../db/connexio.php';
 $conn = connectBD();
 
 $idPais = $_POST['id'];
@@ -26,9 +26,10 @@ try {
         $stmt->execute();
 
         echo "País eliminado correctamente.";
+        
     }
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
 ?>
-<a href="insertPais.php">Volver a la lista de países</a>
+<a href="../vistas/insertPais.php">Volver a la lista de países</a>

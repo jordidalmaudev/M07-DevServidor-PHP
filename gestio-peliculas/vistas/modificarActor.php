@@ -8,7 +8,7 @@
 <body>
 <?php
 
-include 'connexio.php';
+require '../db/connexio.php';
 $conn = connectBD();
 
 $id = $_GET['id'];
@@ -26,7 +26,7 @@ $stmt->execute();
 $paises = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<form action="modificar_actor.php" method="POST">
+<form action="../controladores/modificar_actor.php" method="POST">
     <input type="hidden" name="id" value="<?php echo $id; ?>">
     <label for="nombreActor">Nombre del Actor:</label>
     <input type="text" id="nombreActor" name="nombreActor" value="<?php echo $actor['nombreActor']?>"><br>
@@ -45,5 +45,7 @@ $paises = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <input type="submit" value="Editar Actor">
 </form>
+
+Volver al <a href="../index.php">listado de actores</a>
 </body>
 </html>

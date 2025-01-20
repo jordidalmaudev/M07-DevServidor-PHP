@@ -14,9 +14,9 @@ $conn = connectBD();
 $id = $_GET['id'];
 
 // Obtener actor por id
-$query = "SELECT * FROM actor WHERE idActor = $id";
+$query = "SELECT * FROM actor WHERE idActor = ?";
 $stmt = $conn->prepare($query);
-$stmt->execute();
+$stmt->execute([strip_tags($id)]);
 $actor = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // Obtener la lista de países

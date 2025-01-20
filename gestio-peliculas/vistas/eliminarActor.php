@@ -31,3 +31,4 @@ $actor = $stmt->fetch(PDO::FETCH_ASSOC);
 <a href="../index.php">Volver al listado de actores</a>
 </body>
 </html>
+

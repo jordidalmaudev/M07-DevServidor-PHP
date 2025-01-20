@@ -9,9 +9,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     
     // Insertar el actor en la base de datos
-    $query = "INSERT INTO actor (nombreActor, nacionalidadActor, imagen) VALUES ('$nombreActor', '$nacionalidadActor', '$imagen')";
+    $query = "INSERT INTO actor (nombreActor, nacionalidadActor, imagen) VALUES (?,?,?);";
+    $stmt = $conn->prepare($query);
+    $insertarActor = $stmt->execute([strip_tags($nombreActor), strip_tags($nacionalidadActor), strip_tags($imagen)]);
     
-    if ($conn->exec($query)) {
+    if ($insertarActor) {
         echo "Actor insertado correctamente.";
         echo "Volver al <a href=\"../index.php\">listado de actores</a>";
     } else {

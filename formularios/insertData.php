@@ -18,7 +18,7 @@ $edad = $_POST['edad'];
 
 
 if (isMail($email)) {
-    $insertDataQuery = "INSERT INTO users (nombre,apellidos,email,edad) VALUES('$nombre','$apellidos','$email','$edad');";
+    $insertDataQuery = "INSERT INTO users (nombre,apellidos,email,edad) VALUES ('$nombre','$apellidos','$email','$edad');";
     if (mysqli_query($conn, $insertDataQuery)) {
         echo " <h2> " . "Data guardada correctamente en la base de datos" . "</h2>";
         echo "<a href='insert.html'>Insertar otro usuario</a> ";

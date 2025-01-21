@@ -1,5 +1,7 @@
 <?php
-require '../db/connexio.php';
+session_start();
+
+require '../functions/funcions.php';
 $conn = connectBD();
 
 $query = "SELECT * FROM usuario";
@@ -13,12 +15,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
 
     foreach ($usuarios as $usuario) {
-        if($usuario['user'] == $user && $usuario['password'] == $password) {
-            header('Location: ../index.php');
-            exit;
+        if ( $user == $usuario['nombre']) {
+            if(password_verify($password, $usuario['pass'])) {
+                $_SESSION['user'] = $usuario['nombre'];
+                header('Location: ../index.php');
+            }
         }
     }
-    header('Location: ../login.php');
+    // header('Location: ../login.php');
 }
 
 ?>

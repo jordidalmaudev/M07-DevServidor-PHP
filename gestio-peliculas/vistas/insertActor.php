@@ -7,7 +7,7 @@
 </head>
 <body>
 <?php
-require '../db/connexio.php';
+require '../functions/funcions.php';
 $conn = connectBD();
 
 // Obtener la lista de países

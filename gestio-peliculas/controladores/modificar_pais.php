@@ -1,5 +1,5 @@
 <?php
-require '../db/connexio.php';
+require '../functions/funcions.php';
 $conn = connectBD();
 
 try {

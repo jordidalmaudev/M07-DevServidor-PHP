@@ -1,3 +1,13 @@
+
+
+<?php
+
+require './functions/funcions.php';
+$conn = connectBD();
+
+navBar();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,18 +19,14 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <h1 class="text-center">Gestió Películas</h1>
+      <?php navBar(); ?>  
+
+        <div class="row mt-5">
+            <h1 class="text-center">Llistat d'Actors</h1>
             <p class="text-center">Col·lecció de dades filmogràfiques</p>
         </div>
 
 
-<?php
-
-require './db/connexio.php';
-$conn = connectBD();
-
-?>
 
 <a href="./vistas/insertActor.php">CREAR UN NUEVO ACTOR</a>
 <a href="./vistas/insertPais.php">AÑADE UN PAIS</a>

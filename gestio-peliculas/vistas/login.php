@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +20,12 @@
             <h1>Login Page</h1>
             <p>Entra en la colección de Películas</p>
         </div>
+        <?php
+        if (isset($_SESSION['error_message'])) {
+            echo '<div class="alert alert-danger" role="alert">' . $_SESSION['error_message'] . '</div>';
+            unset($_SESSION['error_message']);
+        }
+        ?>
         <div class="row w-25">
 
             <form action="../controladores/login.php" method="POST">

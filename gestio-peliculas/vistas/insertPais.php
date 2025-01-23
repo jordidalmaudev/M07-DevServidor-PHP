@@ -22,6 +22,7 @@
 
     <div class="row">
         <div class="col-md-6">
+        <h2>Agregar País</h2>
             <form action="../controladores/insertar_pais.php" method="POST">
                 <div class="mb-3">
                     <label for="nombrePais" class="form-label">Nombre del País:</label>

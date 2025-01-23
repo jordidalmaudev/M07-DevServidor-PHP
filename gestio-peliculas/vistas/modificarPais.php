@@ -15,9 +15,9 @@
 
     $id = $_GET['id'];
 
-    $sql = "SELECT * FROM pais WHERE idPais = $id";
+    $sql = "SELECT * FROM pais WHERE idPais = ?";
     $stm = $conn->prepare($sql);
-    $stm->execute();
+    $stm->execute([strip_tags($id)]);
     $pais = $stm->fetch(PDO::FETCH_ASSOC);
     ?>
 

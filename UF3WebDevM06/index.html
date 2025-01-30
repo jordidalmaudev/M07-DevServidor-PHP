@@ -3,30 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Gestio Formularis</title>
 </head>
 <body>
-    <h2>Formulari de Registre</h2>
-    <form action="formulari.php" method="get">
-        <div>
-            <label for="usuari">Usuari:</label>
-            <input type="text" id="usuari" name="usuari" required>
-        </div>
-        <div>
-            <label for="email">Correu electrònic:</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div>
-            <label for="password">Contrasenya:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <div>
-            <label for="confirm_password">Repeteix contrasenya:</label>
-            <input type="password" id="confirm_password" name="confirm_password" required>
-        </div>
-        <div>
-            <button type="submit">Registrar</button>
-        </div>
-    </form>
+    <div class="container">
+        <h2>Formulari de Registre</h2>
+        <form action="formulari.php" method="get">
+            <div class="form-item">
+                <label for="usuari">Usuari:</label>
+                <input type="text" id="usuari" name="usuari" pattern="[a-z0-9]+" title="El camp usuari només admet lletres sense accents, de la a a la z en minúscula i números." required>
+            </div>
+            <div class="form-item">
+                <label for="email">Correu electrònic:</label>
+                <input type="email" id="email" name="email" pattern="[a-z0-9]+[a-z0-9]*\.[a-z0-9]+@insestatut\.cat" title="El correu electrònic ha de seguir l'estructura nomcognom.alum@insestatut.cat" required>
+            </div>
+            <div class="form-item">
+                <label for="password">Contrasenya:</label>
+                <input type="password" id="password" name="password" pattern="[a-zA-Z0-9$%!-.]{8,16}" title="La contrasenya només admet text d’entre 8 i 16 caràcters, ja siguin lletres de la a a la z sense accents, números o els símbols $, %, !, -, ., _." required>
+            </div>
+            <div class="form-item">
+                <label for="confirm_password">Repeteix contrasenya:</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+            </div>
+            <div class="form-item">
+                <button type="submit">Registrar</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('confirm_password').addEventListener('input', function() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = this.value;
+            if (password !== confirmPassword) {
+                this.setCustomValidity('Les contrasenyes no coincideixen.');
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+
+        document.getElementById('password').addEventListener('input', function() {
+            const pattern = "/^[a-zA-Z0-9$%!-.]{8,16}$/";
+            if (!pattern.test(this.value)) {
+                this.setCustomValidity("La contrasenya només admet text d'entre 8 i 16 caràcters, ja siguin lletres de la a a la z sense accents, números o els símbols $, %, !, -, ., _.");
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+    </script>
 </body>
 </html>

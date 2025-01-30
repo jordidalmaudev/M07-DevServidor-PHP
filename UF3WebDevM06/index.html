@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h2>Formulari de Registre</h2>
-        <form action="formulari.php" method="get">
+        <form id="registrationForm" action="formulari.php" method="get">
             <div class="form-item">
                 <label for="usuari">Usuari:</label>
                 <input type="text" id="usuari" name="usuari" pattern="[a-z0-9]+" title="El camp usuari només admet lletres sense accents, de la a a la z en minúscula i números." required>
@@ -20,7 +20,7 @@
             </div>
             <div class="form-item">
                 <label for="password">Contrasenya:</label>
-                <input type="password" id="password" name="password" pattern="[a-zA-Z0-9$%!-.]{8,16}" title="La contrasenya només admet text d’entre 8 i 16 caràcters, ja siguin lletres de la a a la z sense accents, números o els símbols $, %, !, -, ., _." required>
+                <input type="password" id="password" name="password" pattern="[a-zA-Z0-9$%!-.]{8,16}" title="La contrasenya només admet text d'entre 8 i 16 caràcters, ja siguin lletres de la a a la z sense accents, números o els símbols $, %, !, -, ., _." required>
             </div>
             <div class="form-item">
                 <label for="confirm_password">Repeteix contrasenya:</label>
@@ -33,22 +33,37 @@
     </div>
 
     <script>
-        document.getElementById('confirm_password').addEventListener('input', function() {
-            const password = document.getElementById('password').value;
-            const confirmPassword = this.value;
-            if (password !== confirmPassword) {
-                this.setCustomValidity('Les contrasenyes no coincideixen.');
-            } else {
-                this.setCustomValidity('');
-            }
-        });
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            const form = event.target;
+            const email = form.email;
+            const password = form.password;
+            const confirmPassword = form.confirm_password;
 
-        document.getElementById('password').addEventListener('input', function() {
-            const pattern = "/^[a-zA-Z0-9$%!-.]{8,16}$/";
-            if (!pattern.test(this.value)) {
-                this.setCustomValidity("La contrasenya només admet text d'entre 8 i 16 caràcters, ja siguin lletres de la a a la z sense accents, números o els símbols $, %, !, -, ., _.");
+            // Validación del campo de correo electrónico
+            if (!email.checkValidity()) {
+                email.setCustomValidity('El correu electrònic ha de seguir l\'estructura nomcognom.alum@insestatut.cat');
             } else {
-                this.setCustomValidity('');
+                email.setCustomValidity('');
+            }
+
+            // Validación del campo de contraseña
+            if (!password.checkValidity()) {
+                password.setCustomValidity('La contrasenya només admet text d\'entre 8 i 16 caràcters, ja siguin lletres de la a a la z sense accents, números o els símbols $, %, !, -, ., _.');
+            } else {
+                password.setCustomValidity('');
+            }
+
+            // Validación del campo de confirmación de contraseña
+            if (password.value !== confirmPassword.value) {
+                confirmPassword.setCustomValidity('Les contrasenyes no coincideixen.');
+            } else {
+                confirmPassword.setCustomValidity('');
+            }
+
+            // Si el formulario no es válido, prevenir el envío
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
             }
         });
     </script>

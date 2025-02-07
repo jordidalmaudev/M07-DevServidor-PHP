@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #202020;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+input {
+    padding: .2rem .5rem;
+    border: solid 1px #333333;
+    border-radius: .2rem;
+}
+
+input:user-valid {
+    border: solid 1px #33AA33;
+}
+
+input:user-invalid {
+    border: solid 1px #AA3333;
+}
+
+.form-item {
+    margin: .5rem 0;
+}

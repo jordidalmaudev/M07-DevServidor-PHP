@@ -9,9 +9,9 @@ try {
     $idPais = $_POST['id'];
     $nombrePais = $_POST['nombrePais']; 
 
-    $sql = "UPDATE pais SET nombrePais = '$nombrePais' WHERE idPais = $idPais";
+    $sql = "UPDATE pais SET nombrePais = ? WHERE idPais = ?";
     $stm = $conn->prepare($sql);
-    $stm->execute();
+    $stm->execute([strip_tags($nombrePais), strip_tags($idPais)]);
 
     $message = "País modificado correctamente.";
     $alertType = "success";

@@ -39,21 +39,21 @@
             const password = form.password;
             const confirmPassword = form.confirm_password;
 
-            // Validación del campo de correo electrónico
+            // campo de correo electrónico
             if (!email.checkValidity()) {
                 email.setCustomValidity('El correu electrònic ha de seguir l\'estructura nomcognom.alum@insestatut.cat');
             } else {
                 email.setCustomValidity('');
             }
 
-            // Validación del campo de contraseña
+            // campo de contraseña
             if (!password.checkValidity()) {
                 password.setCustomValidity('La contrasenya només admet text d\'entre 8 i 16 caràcters, ja siguin lletres de la a a la z sense accents, números o els símbols $, %, !, -, ., _.');
             } else {
                 password.setCustomValidity('');
             }
 
-            // Validación del campo de confirmación de contraseña
+            // campo de confirmación de contraseña
             if (password.value !== confirmPassword.value) {
                 confirmPassword.setCustomValidity('Les contrasenyes no coincideixen.');
             } else {
